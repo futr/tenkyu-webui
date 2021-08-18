@@ -1,0 +1,38 @@
+.easybtn {
+    display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    /* -webkit-touch-callout: none; */
+    outline: 0;
+
+    font-size: 12pt;
+    color: white;
+    background-color: #1E90FF;
+    
+    margin: 2px;
+    padding: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-width: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px -1px #BBBBBB;
+}
+
+.easybtn::-moz-focus-inner {
+    border: 0;
+}
+
+.easybtn:hover {
+    cursor: pointer;
+}
+
+.easybtn:enabled:active {
+    filter: brightness( 1.2 );
+    box-shadow: 0 1px 3px -1px #C2C2C2;
+}
+
+.easybtn:disabled {
+    background-color: #C2C2C2 !important;
+    box-shadow: 0 0 0 0;
+}

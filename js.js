@@ -15,6 +15,10 @@ var starNameSize = null;
 var consteNameSize = null;
 var messierNameSize = null;
 var infoStrSize = null;
+var raSplit = null;
+var deRep = null;
+var southOffX = null;
+var southOffY = null;
 
 window.addEventListener( "DOMContentLoaded", () => {
     // 初期化
@@ -32,6 +36,7 @@ window.addEventListener( "DOMContentLoaded", () => {
 function readConfig()
 {
     radius = document.getElementById( "radiusSpin" ).value;
+    raSplit = document.getElementById( "splitSpin" ).value;
     obsLat = document.getElementById( "latSpin" ).value;
     minMag = document.getElementById( "minMagSpin" ).value;
     starSize = document.getElementById( "starSizeSpin" ).value;
@@ -45,6 +50,9 @@ function readConfig()
     drawMessier = document.getElementById( "messierCheck" ).checked;
     drawObsLine = document.getElementById( "obsLineCheck" ).checked;
     engMode = document.getElementById( "engModeCheck" ).checked;
+    deRep = document.getElementById( "deRepCheck" ).checked;
+    southOffX = document.getElementById( "southOffXSpin" ).value;
+    southOffY = document.getElementById( "southOffYSpin" ).value;
 }
 
 function generatePDF()
@@ -63,7 +71,8 @@ function generatePDF()
     var arg = "";
 
     arg = arg +
-        "radius="   + encodeURIComponent( radius ) + "&" + 
+        "radius="   + encodeURIComponent( radius ) + "&" +
+        "split="    + encodeURIComponent( raSplit ) + "&" +
         "lat="      + encodeURIComponent( obsLat ) + "&" + 
         "mag="      + encodeURIComponent( minMag ) + "&" + 
         "ssize="    + encodeURIComponent( starSize ) + "&" + 
@@ -76,7 +85,10 @@ function generatePDF()
         "conste="   + encodeURIComponent( getBoolStr( drawConste ) ) + "&" + 
         "messier="  + encodeURIComponent( getBoolStr( drawMessier ) ) + "&" + 
         "obsline="  + encodeURIComponent( getBoolStr( drawObsLine ) ) + "&" + 
-        "eng="      + encodeURIComponent( getBoolStr( engMode ) );
+        "eng="      + encodeURIComponent( getBoolStr( engMode ) ) + "&" +
+        "derep="    + encodeURIComponent( deRep ? "2" : "1" ) + "&" +
+        "sofx="     + encodeURIComponent( southOffX ) + "&" +
+        "sofy="     + encodeURIComponent( southOffY );
 
     window.location.href = baseURL + "?" + arg;
 }

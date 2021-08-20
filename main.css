@@ -68,6 +68,10 @@ main {
 	text-align: center;
 }
 
+input[type="number"] {
+    text-align: right;
+}
+
 .easybtn {
 	vertical-align: baseline;
 	line-height: 1;

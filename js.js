@@ -19,6 +19,10 @@ var raSplit = null;
 var deRep = null;
 var southOffX = null;
 var southOffY = null;
+var starColor = null;
+var starNameColor = null;
+var consteColor = null;
+var messierColor = null;
 
 window.addEventListener( "DOMContentLoaded", () => {
     // 初期化
@@ -53,6 +57,9 @@ function readConfig()
     deRep = document.getElementById( "deRepCheck" ).checked;
     southOffX = document.getElementById( "southOffXSpin" ).value;
     southOffY = document.getElementById( "southOffYSpin" ).value;
+    starColor = document.getElementById( "starColor" ).value;
+    consteColor = document.getElementById( "consteColor" ).value;
+    messierColor = document.getElementById( "messierColor" ).value;
 }
 
 function generatePDF()
@@ -89,7 +96,10 @@ function generatePDF()
         "eng="      + encodeURIComponent( getBoolStr( engMode ) ) + "&" +
         "derep="    + encodeURIComponent( deRep ? "2" : "1" ) + "&" +
         "sofx="     + encodeURIComponent( southOffX ) + "&" +
-        "sofy="     + encodeURIComponent( southOffY );
+        "sofy="     + encodeURIComponent( southOffY ) + "&" +
+        "sclr="     + encodeURIComponent( starColor ) + "&" +
+        "cclr="     + encodeURIComponent( consteColor ) + "&" +
+        "mclr="     + encodeURIComponent( messierColor );
 
     window.location.href = baseURL + "?" + arg;
 }

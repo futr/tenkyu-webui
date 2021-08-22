@@ -23,6 +23,10 @@ var starColor = null;
 var starNameColor = null;
 var consteColor = null;
 var messierColor = null;
+var obsDate = null;
+var obsLocalTime = null;
+var offsetFromUTC = null;
+var drawObsZenith = null;
 
 window.addEventListener( "DOMContentLoaded", () => {
     // 初期化
@@ -42,6 +46,7 @@ function readConfig()
     radius = document.getElementById( "radiusSpin" ).value;
     raSplit = document.getElementById( "splitSpin" ).value;
     obsLat = document.getElementById( "latSpin" ).value;
+    obsLon = document.getElementById( "lonSpin" ).value;
     minMag = document.getElementById( "minMagSpin" ).value;
     starSize = document.getElementById( "starSizeSpin" ).value;
     starNameSize = document.getElementById( "starNameSize" ).value;
@@ -60,6 +65,10 @@ function readConfig()
     starColor = document.getElementById( "starColor" ).value;
     consteColor = document.getElementById( "consteColor" ).value;
     messierColor = document.getElementById( "messierColor" ).value;
+    obsDate = document.getElementById( "obsDate" ).value;
+    obsLocalTime = document.getElementById( "obsLocalTime" ).value;
+    offsetFromUTC = document.getElementById( "offsetUTCSpin" ).value;
+    drawObsZenith = document.getElementById( "obsZenithCheck" ).checked;
 }
 
 function generatePDF()
@@ -82,6 +91,7 @@ function generatePDF()
         "radius="   + encodeURIComponent( radius ) + "&" +
         "split="    + encodeURIComponent( raSplit ) + "&" +
         "lat="      + encodeURIComponent( obsLat ) + "&" + 
+        "lon="      + encodeURIComponent( obsLon ) + "&" + 
         "mag="      + encodeURIComponent( minMag ) + "&" + 
         "ssize="    + encodeURIComponent( starSize ) + "&" + 
         "snsize="   + encodeURIComponent( starNameSize ) + "&" + 
@@ -99,7 +109,11 @@ function generatePDF()
         "sofy="     + encodeURIComponent( southOffY ) + "&" +
         "sclr="     + encodeURIComponent( starColor ) + "&" +
         "cclr="     + encodeURIComponent( consteColor ) + "&" +
-        "mclr="     + encodeURIComponent( messierColor );
+        "mclr="     + encodeURIComponent( messierColor ) + "&" +
+        "d="        + encodeURIComponent( obsDate ) + "&" +
+        "t="        + encodeURIComponent( obsLocalTime ) + "&" +
+        "tz="       + encodeURIComponent( offsetFromUTC ) + "&" +
+        "zenith="   + encodeURIComponent( getBoolStr( drawObsZenith ) );
 
     window.location.href = baseURL + "?" + arg;
 }

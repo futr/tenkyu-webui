@@ -71,6 +71,7 @@ function generatePDF()
     var arg = "";
 
     arg = arg +
+        "l="        + encodeURIComponent( navigator.language ) + "&" +
         "radius="   + encodeURIComponent( radius ) + "&" +
         "split="    + encodeURIComponent( raSplit ) + "&" +
         "lat="      + encodeURIComponent( obsLat ) + "&" + 

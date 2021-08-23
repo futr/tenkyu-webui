@@ -17,6 +17,7 @@ var messierNameSize = null;
 var infoStrSize = null;
 var raSplit = null;
 var deRep = null;
+var raRep = null;
 var southOffX = null;
 var southOffY = null;
 var starColor = null;
@@ -69,6 +70,7 @@ function readConfig()
     drawObsLine = document.getElementById( "obsLineCheck" ).checked;
     engMode = document.getElementById( "engModeCheck" ).checked;
     deRep = document.getElementById( "deRepCheck" ).checked;
+    raRep = document.getElementById( "raRepSpin" ).value;
     southOffX = document.getElementById( "southOffXSpin" ).value;
     southOffY = document.getElementById( "southOffYSpin" ).value;
     starColor = document.getElementById( "starColor" ).value;
@@ -114,6 +116,7 @@ function generatePDF()
         "obsline="  + encodeURIComponent( getBoolStr( drawObsLine ) ) + "&" + 
         "eng="      + encodeURIComponent( getBoolStr( engMode ) ) + "&" +
         "derep="    + encodeURIComponent( deRep ? "2" : "1" ) + "&" +
+        "rarep="    + encodeURIComponent( raRep ) + "&" +
         "sofx="     + encodeURIComponent( southOffX ) + "&" +
         "sofy="     + encodeURIComponent( southOffY ) + "&" +
         "sclr="     + encodeURIComponent( starColor ) + "&" +

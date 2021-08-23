@@ -38,7 +38,16 @@ window.addEventListener( "DOMContentLoaded", () => {
         return;
     }
 
+    // Set current date
+    let today = new Date();
+
+    // Set date time info
+    document.getElementById( "obsDate" ).value = getDateString( today );
+    document.getElementById( "offsetUTCSpin" ).value = -today.getTimezoneOffset() / 60;
+
+    // Set event handler
     document.getElementById( "generatePDFButton" ).onclick = generatePDF;
+    document.getElementById( "locationButton" ).onclick = getLocation;
 });
 
 function readConfig()
@@ -116,4 +125,25 @@ function generatePDF()
         "zenith="   + encodeURIComponent( getBoolStr( drawObsZenith ) );
 
     window.location.href = baseURL + "?" + arg;
+}
+
+function getLocation()
+{
+    navigator.geolocation.getCurrentPosition( pos => {
+        const crd = pos.coords;
+        const lat = crd.latitude;
+        const lon = crd.longitude;
+
+        document.getElementById( "latSpin" ).value = lat.toFixed( 1 ).toString();
+        document.getElementById( "lonSpin" ).value = lon.toFixed( 1 ).toString();
+    } );
+}
+
+function getDateString( date )
+{
+    let y = date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
+
+    return y.toString().padStart( 4, "0" ) + "-" + m.toString().padStart( 2, "0" ) + "-" + d.toString().padStart( 2, "0" );
 }

@@ -31,6 +31,10 @@ main {
 	height: 100%;
 }
 
+#infoBox {
+	text-align: center;
+}
+
 #warnText {
 	font-size: 0.9rem;
 }
@@ -50,7 +54,7 @@ main {
 	display: grid;
 	grid-gap: 1rem;
 	max-width: max-content;
-	grid-template-columns: max-content 1fr;
+	grid-template-columns: minmax( 4ch, max-content ) minmax( 8ch, 1fr ); /* max-content > 1frみたいな力関係？ */
 	align-items: center;
 	box-sizing: border-box;
 }
@@ -68,11 +72,8 @@ main {
 	text-align: center;
 }
 
-#infoBox {
-	text-align: center;
-}
-
 input[type="number"] {
+	max-width: 18ch;
     text-align: right;
 }
 

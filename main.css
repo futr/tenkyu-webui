@@ -54,7 +54,7 @@ main {
 	display: grid;
 	grid-gap: 1rem;
 	max-width: max-content;
-	grid-template-columns: minmax( 4ch, auto ) minmax( 8ch, 1fr ); /* max-content > 1frみたいな力関係？ */
+	grid-template-columns: auto minmax( 8ch, auto ); /* max-content > 1frみたいな力関係？ */
 	align-items: center;
 	box-sizing: border-box;
 }
@@ -73,7 +73,6 @@ main {
 }
 
 input[type="number"] {
-	max-width: 18ch;
     text-align: right;
 }
 
